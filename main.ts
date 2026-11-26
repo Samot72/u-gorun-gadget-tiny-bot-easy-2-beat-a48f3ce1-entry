@@ -48,8 +48,11 @@ const STOP_DEN = 100n;
 /** Take-profit: exit when the position is worth 150% of its cost. */
 const TP_NUM = 150n;
 const TP_DEN = 100n;
-/** Max slippage past the decision close, in bps. */
-const MAX_SLIPPAGE_BPS = 100;
+/** Max slippage past the decision close, in bps. Tightened from 100 to 80
+    after the first local grade: the dev window showed one fill refused at
+    100 bps that would have been worse, so a stricter cap keeps fills closer
+    to the price the signal was decided on. */
+const MAX_SLIPPAGE_BPS = 80;
 
 /** One EMA: the closes seen until it starts, then its value. */
 interface Ema {

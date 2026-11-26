@@ -30,7 +30,7 @@ node <kit>/cli/makefun.mjs grade-local --kit <kit> --bot . --driver process
 
 ## Local backtest (dev window)
 
-On the kit's frozen dev window (136 hourly bars, a broad downtrend where buy-and-hold loses about $858 on $10,000), this bot loses about $135 with 27 trades and a 1.7% max drawdown — beating buy-and-hold by roughly $720 while staying mostly in USDC and riding only the confirmed up-moves.
+On the kit's frozen dev window (136 hourly bars, a broad downtrend where buy-and-hold loses about $858 on $10,000), this bot loses about $163 with 27 trades and a 2.3% max drawdown — beating buy-and-hold by roughly $695 while staying mostly in USDC and riding only the confirmed up-moves. (Measured with `grade-local --driver process`, two runs byte-identical.)
 
 ## License
 

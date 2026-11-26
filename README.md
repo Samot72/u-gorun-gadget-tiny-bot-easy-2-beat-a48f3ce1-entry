@@ -14,7 +14,7 @@ Dual-EMA momentum with whipsaw protection, long only:
 - **Enter:** fast EMA above slow EMA for **2 consecutive closes** (a one-bar cross is not enough — hourly crypto whipsaws too much), the market is not dead (12-bar mean true range ≥ 5 bps of price), and the symbol is not already held.
 - **Exit the whole position:** fast EMA below slow EMA for 2 consecutive closes (confirmed reversal), or a **−8% stop-loss**, or a **+50% take-profit**.
 - **Sizing:** equity split evenly over the 7-symbol universe, each buy capped at 25% of equity (the harness max weight) and at available cash; sells go first and never fund the same reply's buys.
-- **Safety:** slippage capped at 100 bps past the decision close; no orders during warm-up; zero-volume bars signal nothing.
+- **Safety:** slippage capped at 80 bps past the decision close; no orders during warm-up; zero-volume bars signal nothing.
 
 ## Run
 

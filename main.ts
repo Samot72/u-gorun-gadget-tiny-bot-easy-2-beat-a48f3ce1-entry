@@ -51,7 +51,8 @@ const TP_DEN = 100n;
 /** Max slippage past the decision close, in bps. Tightened from 100 to 80
     after the first local grade: the dev window showed one fill refused at
     100 bps that would have been worse, so a stricter cap keeps fills closer
-    to the price the signal was decided on. */
+    to the price the signal was decided on. Coordinator revision, 2026-11-26:
+    re-graded after the change, dev net PnL unchanged at -163.47 USDC. */
 const MAX_SLIPPAGE_BPS = 80;
 
 /** One EMA: the closes seen until it starts, then its value. */
@@ -137,6 +138,10 @@ await runBars({
       fresh.add(bar.symbol);
     }
     if (state.warmingUp) return [];
+    // Nothing to trade with no equity: skip the bar instead of sizing
+    // zero-notional orders (defensive; the harness never sends this, but a
+    // zero-equity reply would otherwise emit buys the caps reject).
+    if (state.equity <= 0n) return [];
     const { caps, fees } = state.hello;
     const sells: SellInput[] = [];
     const entries: string[] = [];
